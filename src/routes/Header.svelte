@@ -17,6 +17,9 @@
 				<li aria-current={$page.url.pathname === '/experience' ? 'page' : undefined}>
 					<a href="/experience">Experience</a>
 				</li>
+				<li aria-current={$page.url.pathname === '/my-work' ? 'page' : undefined}>
+					<a href="/my-work">My work</a>
+				</li>
 				<li aria-current={$page.url.pathname === '/skills' ? 'page' : undefined}>
 					<a href="/skills">Skills</a>
 				</li>
@@ -105,6 +108,7 @@
 		height: 100%;
 		align-items: center;
 		padding: 0 0.5rem;
+		font-family: var(--font-mono);
 		color: var(--color-text);
 		font-weight: 700;
 		font-size: 0.8rem;
