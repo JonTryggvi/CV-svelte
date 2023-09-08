@@ -1,17 +1,17 @@
 <script>
   import { onMount } from "svelte";
   import { fly } from 'svelte/transition';
-
     let api='https://jontryggvi.is/wp-json/svelte/get-post-acf/';
     let uri=api+'?chapter=love';
     let love;
     let visible = false;
     onMount(async () => {
-        const res=await fetch(uri);
-        const data= await res.json();
-        love=data;
-        visible = true
+      const res=await fetch(uri);
+      const data= await res.json();
+      love=data;
+      visible = true
     });
+
 
 </script>
 {#if visible}
