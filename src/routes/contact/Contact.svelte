@@ -15,7 +15,6 @@
       const data= await res.json();
       contact=data;
       visible = true
-      console.log(contact)
     });
 </script>
 {#if visible}

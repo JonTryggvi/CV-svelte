@@ -10,7 +10,6 @@
 		const data = await res.json();
 		myWork = data;
 		visible = true;
-		console.log(myWork)
 	});
 </script>
 

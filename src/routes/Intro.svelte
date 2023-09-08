@@ -35,6 +35,7 @@
         <img src={imgLarge} alt="JT" />
       </picture>
     </div>
+    <div class="grid-evener" />
   </section>
 {/if}
 <style>
@@ -48,6 +49,7 @@
   }
   h1 {
     flex-basis: 100%;
+    align-self: self-end;
   }
   .left {
     width: calc(460% - 20px);
