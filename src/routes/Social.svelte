@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-	import SvgLibrary from '$lib/images/SvgLibrary.svelte';
+	import SvgLibrary from '$lib/components/SvgLibrary.svelte';
 
 	let api = 'https://jontryggvi.is/wp-json/svelte/get-post-acf/';
 	let items=[];

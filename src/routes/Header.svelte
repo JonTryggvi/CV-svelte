@@ -4,38 +4,47 @@
 
 
 <header>
+	<div class="fixed">
+		<nav>
+			<div class="logo"></div>
+			<ul>
+				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+					<a href="/">Hi there!</a>
+				</li>
+				<li aria-current={$page.url.pathname === '/love' ? 'page' : undefined}>
+					<a href="/love">I love to</a>
+				</li>
+				<li aria-current={$page.url.pathname === '/experience' ? 'page' : undefined}>
+					<a href="/experience">Experience</a>
+				</li>
+				<li aria-current={$page.url.pathname === '/skills' ? 'page' : undefined}>
+					<a href="/skills">Skills</a>
+				</li>
+				<li aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}>
+					<a href="/contact">Contact me?!</a>
+				</li>
 
-	<div class="corner">
-		<a href="/">
-			<!-- <img src={logo} alt="SvelteKit" /> -->
-		</a>
-	</div>
+			</ul>
+			<div></div>
+		</nav>
 
-	<nav>
-
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Hi there!</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/love' ? 'page' : undefined}>
-				<a href="/love">I love to</a>
-			</li>
-
-		</ul>
-
-	</nav>
-
-	<div class="corner">
 
 	</div>
 </header>
 
 <style>
 	header {
+		height: 48px;
 		display: flex;
 		justify-content: space-between;
 	}
-
+.fixed {
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 48px;
+	position: fixed;
+}
 	.corner {
 		width: 3em;
 		height: 3em;

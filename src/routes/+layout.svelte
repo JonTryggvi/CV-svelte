@@ -26,8 +26,8 @@
 
 	main {
 		flex: 1;
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		/* flex-direction: column; */
 		padding: 1rem;
 		width: 100%;
 		max-width: 82rem;
