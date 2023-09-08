@@ -6,6 +6,8 @@
 	let items=[];
 	let uri = api + '?chapter=social';
 	let visible = false;
+	let color = 'rgba(0,0,0,.7)';
+
 	onMount(async () => {
     const res = await fetch(uri);
 		const data = await res.json();
@@ -21,7 +23,7 @@
       {#each items as item}
         <li>
           <a href={item.link} target="_blank"
-            ><SvgLibrary name={item.name} class="this-is-optional" width="2rem" height="2rem" /></a
+            ><SvgLibrary name={item.name} class="social-icons" width="2rem" height="2rem" {color}  /></a
           >
         </li>
       {/each}
@@ -38,4 +40,5 @@
 		justify-content: space-around;
 		list-style: none;
 	}
+
 </style>

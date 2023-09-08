@@ -1,21 +1,17 @@
 <script>
   import { onMount } from "svelte";
   import { fly } from 'svelte/transition';
-  import Account from "svelte-material-icons/Account.svelte";
-  import MapMarker from "svelte-material-icons/MapMarker.svelte";
-  import Email from "svelte-material-icons/Email.svelte";
-  import Phone from "svelte-material-icons/Phone.svelte";
-    let api='https://jontryggvi.is/wp-json/svelte/get-post-acf/';
-    let uri=api+'?chapter=contact';
-    let contact;
-    let visible = false;
-    let size = '28px';
-    onMount(async () => {
-      const res=await fetch(uri);
-      const data= await res.json();
-      contact=data;
-      visible = true
-    });
+  let api='https://jontryggvi.is/wp-json/svelte/get-post-acf/';
+  let uri=api+'?chapter=contact';
+  let contact;
+  let visible = false;
+  let size = '28px';
+  onMount(async () => {
+    const res=await fetch(uri);
+    const data= await res.json();
+    contact=data;
+    visible = true
+  });
 </script>
 {#if visible}
 <section class="section_contact" in:fly={{ y: -20, duration: 200 }} out:fly={{y:20, duration:200}}>
@@ -24,16 +20,16 @@
    <address>
     <ul class="address">
       <li>
-        <Account {size} />{contact.fullname}
+        <span class="material-icons">person</span>{contact.fullname}
       </li>
       <li>
-        <MapMarker {size} />{contact.address} {contact.city}
+        <span class="material-icons">location_on</span>{contact.address} {contact.city}
       </li>
       <li>
-        <Email {size} />{contact.email}
+       <span class="material-icons">email</span>{contact.email}
       </li>
       <li>
-        <Phone {size} />{contact.tel}
+        <span class="material-icons">call</span>{contact.tel}
       </li>
     </ul>
    </address>

@@ -45,7 +45,6 @@
 		gap: 20px;
 		justify-content: space-between;
 	}
-
 	.right {
 		display: flex;
 		justify-content: center;
@@ -55,7 +54,6 @@
 		display: flex;
 		gap: 20px;
     flex-flow: row wrap;
-		/* grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); */
 		padding: 0;
 
 	}
@@ -66,13 +64,8 @@
 		font-weight: 700;
 		margin-bottom: 0;
 	}
-	.thing_skilled p {
-		margin-top: 0;
-	}
+
 	.left {
-		/* display: flex;
-		flex-flow: column;
-		justify-content: flex-start; */
 		width: 100%;
 	}
 	h1 {
