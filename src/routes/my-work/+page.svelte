@@ -1,9 +1,9 @@
 <script>
-	import Skills from './Skills.svelte';
+	import MyWork from './MyWork.svelte';
 </script>
 <svelte:head>
-	<title>Skills</title>
+	<title>My work</title>
 	<meta name="description" content="Jón Tryggvi CV" />
 </svelte:head>
 
-<Skills />
+<MyWork />

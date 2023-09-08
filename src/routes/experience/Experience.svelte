@@ -14,6 +14,7 @@
 </script>
 {#if visible}
 <section class="section_experience" in:fly={{ y: -20, duration: 200 }} out:fly={{y:20, duration:200}}>
+  <h1>{experience.experience_header}</h1>
   <div class="left">
     <ul class="thing_experienced">
       {#each experience.experience_rows as thing}
@@ -26,9 +27,9 @@
     </ul>
   </div>
   <div class="right">
-    <h1>{experience.experience_header}</h1>
     <p>{experience.experience_description}</p>
   </div>
+  <div class="grid-evener" aria-hidden="true"></div>
 </section>
 {/if}
 <style>
@@ -61,10 +62,14 @@
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
+    align-items: flex-start;
     width: calc(60% - 20px);
   }
-  .right h1 {
-    text-align: left;
+  h1 {
+    text-align: center;
     margin-bottom: 0;
+    width: 100%;
+    align-self: self-end;
   }
+
 </style>

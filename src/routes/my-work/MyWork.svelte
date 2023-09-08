@@ -2,33 +2,34 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	let api = 'https://jontryggvi.is/wp-json/svelte/get-post-acf/';
-	let uri = api + '?chapter=skills';
-	let skills;
+	let uri = api + '?chapter=my-work';
+	let myWork;
 	let visible = false;
 	onMount(async () => {
 		const res = await fetch(uri);
 		const data = await res.json();
-		skills = data;
+		myWork = data;
 		visible = true;
+		console.log(myWork)
 	});
 </script>
 
 {#if visible}
 	<section
-		class="section_skills"
+		class="section_myWork"
 		in:fly={{ y: -20, duration: 200 }}
 		out:fly={{ y: 20, duration: 200 }}
 	>
-		<h1>{skills.skills_header}</h1>
+		<h1>{myWork.my_work_header}</h1>
 		<div class="left">
-			<p>{skills.skills_descripton}</p>
+			<p>{myWork.my_work_description}</p>
 		</div>
 		<div class="right">
 			<div class="thing_skilled">
-				{#each skills.skills_rows as thing}
+				{#each myWork.my_work_rows as thing}
 					<div class="skill">
-						<h2>{thing.skill_or_asset}</h2>
-						<p>{thing.list_of_skill_or_asset}</p>
+						<h2>{thing.what_work}</h2>
+						{@html thing.what_work_description}
 					</div>
 				{/each}
 			</div>
@@ -38,7 +39,7 @@
 {/if}
 
 <style>
-	.section_skills {
+	.section_myWork {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
