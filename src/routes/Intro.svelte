@@ -9,6 +9,7 @@
     let imgMedium;
     let imgSmall;
     let visible = false;
+    let description
     onMount(async () => {
         const res=await fetch(uri);
         const data= await res.json();
@@ -17,23 +18,24 @@
         imgMedium = intro.img.sizes.medium_large;
         imgSmall = intro.img.sizes.thumbnail;
         visible = true
+        description = intro.intro_description.replace('{{music}}', `<a href=${intro.unijonlink} target="_blank">music</a>`)
     });
 
 </script>
 {#if visible}
-<section class="section_intro" in:fly={{ y: 20, duration: 200 }} out:fly={{y:-20, duration:200}}>
-  <h1>Hello my name is {intro.name}</h1>
-  <div class="left">
-    <p>{intro.intro_description}</p>
-  </div>
-  <div class="right">
-    <picture class="intro_img">
-      <source media="(min-width:650px)" srcset={imgMedium}>
-      <source media="(min-width:465px)" srcset={imgSmall}>
-      <img src={imgLarge} alt="JT" />
-    </picture>
-  </div>
-</section>
+  <section class="section_intro" in:fly={{ y: 20, duration: 200 }} out:fly={{y:-20, duration:200}}>
+    <h1>Hello my name is {intro.name}</h1>
+    <div class="left">
+      <p>{@html description}</p>
+    </div>
+    <div class="right">
+      <picture class="intro_img">
+        <source media="(min-width:650px)" srcset={imgMedium}>
+        <source media="(min-width:465px)" srcset={imgSmall}>
+        <img src={imgLarge} alt="JT" />
+      </picture>
+    </div>
+  </section>
 {/if}
 <style>
 
