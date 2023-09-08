@@ -1,6 +1,5 @@
 <script>
 	import Intro from './Intro.svelte';
-	// import Social from './Social.svelte';
 
 </script>
 <svelte:head>
@@ -9,4 +8,3 @@
 </svelte:head>
 
 <Intro />
-<!-- <Social /> -->
