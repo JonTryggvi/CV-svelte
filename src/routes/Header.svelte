@@ -1,10 +1,12 @@
 <script>
 	import { page } from '$app/stores';
 	import SvgLibrary from '$lib/components/SvgLibrary.svelte';
+	let y;
 </script>
 
+<svelte:window bind:scrollY={y} />
 <header>
-	<div class="fixed">
+	<div class="fixed {y > 20 ? 'scrolled' : ''}">
 		<nav>
 			<div class="logo">
 				<a href="/">
@@ -41,6 +43,7 @@
 		height: 48px;
 		display: flex;
 		justify-content: space-between;
+
 	}
 	.logo {
 		display: flex;
@@ -64,6 +67,11 @@
 		width: 100%;
 		height: 48px;
 		position: fixed;
+		background-color: var(--color-bg-0);
+	}
+	.scrolled {
+		box-shadow: 0 0 30px -14px rgba(0,0,0,.3);
+		transition: box-shadow 200ms ease-in-out;
 	}
 	nav {
 		display: flex;
