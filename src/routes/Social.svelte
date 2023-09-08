@@ -23,7 +23,7 @@
       {#each items as item}
         <li>
           <a href={item.link} target="_blank"
-            ><SvgLibrary name={item.name} class="social-icons" width="2rem" height="2rem" {color}  /></a
+            ><SvgLibrary name={item.name} class="social-icons" width="1.5rem" height="1.5rem" {color}  /></a
           >
         </li>
       {/each}
