@@ -1,11 +1,13 @@
 @import "@fontsource/fira-mono";
 @import "@fontsource-variable/playfair-display";
 @import "@fontsource/source-sans-pro";
+@import '@fontsource/material-icons-outlined';
 
 :root {
 	--font-heading: "Playfair Display Variable", sans-serif;
 	--font-body: "Source Sans Pro", sans-serif;
 	--font-mono: "Fira Mono", monospace;
+	--font-icons: 'Material Icons Outlined', sans-serif;
 	--color-bg-0: rgb(202, 216, 228);
 	--color-bg-1: hsl(209, 36%, 86%);
 	--color-bg-2: hsl(224, 44%, 95%);
@@ -111,3 +113,36 @@ button:focus:not(:focus-visible) {
 .grid-evener {
 	width: 100%;
 }
+
+.material-icons {
+  font-family: var(--font-icons);
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+ .social-icons path {
+    fill: var(--color-text);
+		transition: fill 200 ease-in-out;
+  }
+ .social-icons:hover path {
+    fill: var(--color-theme-1);
+  }

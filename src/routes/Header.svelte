@@ -1,12 +1,16 @@
 <script>
 	import { page } from '$app/stores';
+	import SvgLibrary from '$lib/components/SvgLibrary.svelte';
 </script>
-
 
 <header>
 	<div class="fixed">
 		<nav>
-			<div class="logo"></div>
+			<div class="logo">
+				<a href="/">
+					<h1>JT</h1>
+				</a>
+			</div>
 			<ul>
 				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a href="/">Hi there!</a>
@@ -26,12 +30,9 @@
 				<li aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}>
 					<a href="/contact">Contact me?!</a>
 				</li>
-
 			</ul>
-			<div></div>
+			<div class="nav-evener" aria-hidden></div>
 		</nav>
-
-
 	</div>
 </header>
 
@@ -41,38 +42,35 @@
 		display: flex;
 		justify-content: space-between;
 	}
-.fixed {
-	top:0;
-	left: 0;
-	width: 100%;
-	height: 48px;
-	position: fixed;
-}
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
+	.logo {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-end;
 		width: 100%;
-		height: 100%;
+		max-width: 3rem;
 	}
+	.logo h1 {
+		font-size: 1.6rem;
+		margin: 0;
 
-	/* .corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	} */
-
+	}
+	.nav-evener {
+		width: 100%;
+		max-width: 3rem;
+	}
+	.fixed {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 48px;
+		position: fixed;
+	}
 	nav {
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		--background: rgba(255, 255, 255, 0.7);
+		margin: 0 auto;
 	}
-
 
 	ul {
 		position: relative;
@@ -83,7 +81,7 @@
 		justify-content: center;
 		align-items: center;
 		list-style: none;
-		background: var(--background);
+		background: transparent;
 		background-size: contain;
 	}
 
@@ -91,16 +89,24 @@
 		position: relative;
 		height: 100%;
 	}
-
-	li[aria-current='page']::before {
-		--size: 6px;
+	li::after {
 		content: '';
-		width: 100%;
+		position: absolute;
+		bottom: -6px;
+		opacity: 0;
+		left: 15%;
+		width: 60%;
+		height: 2px;
+	}
+	li[aria-current='page']::after {
+		width: 70%;
 		height: 2px;
 		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-
+		bottom: 3px;
+		opacity: 1;
+		background-color: var(--color-theme-2);
+		left: 15%;
+		transition: bottom 300ms ease-in-out, opacity 300ms 100ms ease-in-out;
 	}
 
 	nav a {
@@ -113,7 +119,7 @@
 		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;
-		letter-spacing: 0.1em;
+		/* letter-spacing: 0.1em; */
 		text-decoration: none;
 		transition: color 0.2s linear;
 	}

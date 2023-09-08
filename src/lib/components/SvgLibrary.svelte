@@ -2,7 +2,7 @@
     export let name;
     export let width = "1rem";
     export let height = "1rem";
-    export let focusable = false;
+
     let icons = [
         {
           box: 24,
@@ -15,7 +15,7 @@
           svg: `<path d="M12 12h2v12h-2z" /><path d="M18 12h2v12h-2z" /><path d="M4 6v2h2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8h2V6zm4 22V8h16v20z" /><path d="M12 2h8v2h-8z" />`
         },
         {
-          box: 25,
+          box: 23,
           name: "facebook",
           svg: `<g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M23 12.0672C23 5.95496 18.0751 1 12 1C5.92486 1 1 5.95496 1 12.0672C1 17.5912 5.02254 22.1697 10.2812 23V15.2663H7.48828V12.0672H10.2812V9.62898C10.2812 6.85525 11.9235 5.32313 14.4361 5.32313C15.6396 5.32313 16.8984 5.53929 16.8984 5.53929V8.26287H15.5114C14.1449 8.26287 13.7188 9.11597 13.7188 9.99119V12.0672H16.7695L16.2818 15.2663H13.7188V23C18.9775 22.1697 23 17.5912 23 12.0672Z" fill="#3F3F46"></path> </g>`
         },
@@ -51,8 +51,9 @@
 {#if displayIcon}
 <svg
   class={$$props.class}
-  {focusable}
   {width}
   {height}
   viewBox="0 0 {displayIcon.box} {displayIcon.box}">{@html displayIcon.svg}</svg>
 {/if}
+
+
