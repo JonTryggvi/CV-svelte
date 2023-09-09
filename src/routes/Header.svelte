@@ -58,6 +58,7 @@
 		justify-content: flex-end;
 		width: 100%;
 		max-width: 5rem;
+		z-index: 3;
 	}
 	.logo h1 {
 		font-size: 1.6rem;
@@ -70,11 +71,12 @@
 		width: 100%;
 		max-width: 3rem;
 		visibility: hidden;
+		z-index: 3;
 		& button {
 			position: relative;
 			border: none;
 			background-color: transparent;
-			padding:0;
+			padding: 0;
 			color: inherit;
 			width: 100%;
 			&::before,
@@ -196,16 +198,23 @@
 		ul {
 			position: absolute;
 			right: -100vw;
-			top: 48px;
+			top: 0px;
 			width: 100vw;
-			height: calc(100vh - 48px);
+			height: 100vh;
 			z-index: 2;
-			background-color: var(--color-bg-0);
+			background-attachment: fixed;
+			background-color: var(--color-bg-1);
+			background-image: radial-gradient(
+					50% 50% at 50% 50%,
+					rgba(255, 255, 255, 0.75) 0%,
+					rgba(255, 255, 255, 0) 100%
+				),
+				linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
 			display: flex;
 			flex-flow: column;
 			opacity: 0;
 			justify-content: flex-start;
-			padding-top: 10rem;
+			padding-top: 13rem;
 			transition: opacity 200ms cubic-bezier(0.47, 0, 0.745, 0.715);
 		}
 		.fixed.open ul {
