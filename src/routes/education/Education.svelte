@@ -2,42 +2,43 @@
   import { onMount } from "svelte";
   import { fly } from 'svelte/transition';
     let api='https://jontryggvi.is/wp-json/svelte/get-post-acf/';
-    let uri=api+'?chapter=experience';
-    let experience;
+    let uri=api+'?chapter=education';
+    let education;
     let visible = false;
     onMount(async () => {
       const res=await fetch(uri);
       const data= await res.json();
-      experience=data;
+      education=data;
       visible = true
+      console.log(education)
     });
 </script>
 {#if visible}
-<section class="section_experience" in:fly={{ y: -20, duration: 200 }} out:fly={{y:20, duration:200}}>
-  <h1>{experience.experience_header}</h1>
+<section class="section_education" in:fly={{ y: -20, duration: 200 }} out:fly={{y:20, duration:200}}>
+  <h1>{education.education_header}</h1>
   <div class="left">
-    <div class="thing_experienced">
-      {#each experience.experience_rows as thing}
+    <div class="thing_education">
+      {#each education.education_rows as thing}
         <div>
-          <h2>{thing.working_for}</h2>
-          <p> {thing.from_to}<br>
-          {thing.working_as}</p>
+          <h2>{thing.what_education}</h2>
+          <p> {thing.when_education}<br>
+          {thing.where_education}</p>
         </div>
       {/each}
     </div>
   </div>
   <div class="right">
-    <p>{experience.experience_description}</p>
+    <p>{education.education_description}</p>
   </div>
   <div class="grid-evener" aria-hidden="true"></div>
 </section>
 {/if}
 <style>
-  .section_experience {
+  .section_education {
     display: grid;
     grid-template:
       'heading heading heading'
-      'left right right' ;
+      'left right right';
     gap: 20px;
   }
 
@@ -47,18 +48,15 @@
     justify-content: center;
     width: 100%;
   }
-  .thing_experienced {
+  .thing_education {
     display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
-  .thing_experienced div {
-    width: 100%;
-  }
-  .thing_experienced h2 {
+  .thing_education h2 {
     font-weight: 700;
     margin-bottom: 0;
   }
-  .thing_experienced p {
+  .thing_education p {
     margin-top: 0;
   }
   .right {
@@ -76,9 +74,8 @@
     width: 100%;
     align-self: self-end;
   }
-
-  	@media (max-width: 768px) {
-    .section_experience {
+	@media (max-width: 768px) {
+    .section_education {
       grid-template: 'heading' 'left' 'right';
     }
 	}

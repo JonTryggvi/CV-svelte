@@ -52,15 +52,14 @@
 		width: 100%;
 	}
 	.thing_skilled {
-		display: flex;
+		display: grid;
 		gap: 20px;
-    flex-flow: row wrap;
-		/* grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); */
+		grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
 		padding: 0;
 
 	}
   .skill {
-    width:48%;
+    width:100%;
   }
 	.thing_skilled h2 {
 		font-weight: 700;
