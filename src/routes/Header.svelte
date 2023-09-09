@@ -125,8 +125,8 @@
 	nav {
 		display: flex;
 		justify-content: space-between;
-		--background: rgba(255, 255, 255, 0.7);
 		margin: 0 auto;
+		height: 100%;
 	}
 
 	ul {
