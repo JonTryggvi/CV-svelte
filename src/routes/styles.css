@@ -8,9 +8,9 @@
 	--font-body: "Source Sans Pro", sans-serif;
 	--font-mono: "Fira Mono", monospace;
 	--font-icons: "Material Icons Outlined", sans-serif;
-	--color-bg-0: rgb(202, 216, 228);
-	--color-bg-1: hsl(209, 36%, 86%);
-	--color-bg-2: hsl(224, 44%, 95%);
+	--color-bg-0: rgb(236, 236, 235);
+	--color-bg-1: hsl(43, 27%, 87%);
+	--color-bg-2: hsl(36, 100%, 98%);
 	--color-theme-1: #ff3e00;
 	--color-theme-2: #4075a6;
 	--color-text: rgba(0, 0, 0, 0.7);
