@@ -68,12 +68,15 @@
 		align-items: center;
 		justify-content: flex-start;
 		width: 100%;
-		max-width: 5rem;
+		max-width: 3rem;
 		visibility: hidden;
 		& button {
 			position: relative;
 			border: none;
 			background-color: transparent;
+			padding:0;
+			color: inherit;
+			width: 100%;
 			&::before,
 			&::after {
 				position: absolute;
@@ -201,7 +204,8 @@
 			display: flex;
 			flex-flow: column;
 			opacity: 0;
-			justify-content: center;
+			justify-content: flex-start;
+			padding-top: 10rem;
 			transition: opacity 200ms cubic-bezier(0.47, 0, 0.745, 0.715);
 		}
 		.fixed.open ul {
