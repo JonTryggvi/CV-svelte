@@ -1,12 +1,15 @@
 <script>
 	import { page } from '$app/stores';
-	import SvgLibrary from '$lib/components/SvgLibrary.svelte';
 	let y;
+	let clicked = false;
+	let clickHandler = (e) => {
+		clicked = !clicked
+	}
 </script>
 
 <svelte:window bind:scrollY={y} />
 <header>
-	<div class="fixed {y > 20 ? 'scrolled' : ''}">
+	<div class="fixed {y > 20 ? 'scrolled' : ''} { clicked ? 'open' : ''}">
 		<nav>
 			<div class="logo">
 				<a href="/">
@@ -14,64 +17,93 @@
 				</a>
 			</div>
 			<ul>
-				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-					<a href="/">Hi there!</a>
+				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined} >
+					<a href="/" on:click={clickHandler}>Hi there!</a>
 				</li>
 				<li aria-current={$page.url.pathname === '/love' ? 'page' : undefined}>
-					<a href="/love">I love to</a>
+					<a href="/love" on:click={clickHandler}>I love to</a>
 				</li>
 				<li aria-current={$page.url.pathname === '/experience' ? 'page' : undefined}>
-					<a href="/experience">Experience</a>
+					<a href="/experience" on:click={clickHandler}>Experience</a>
+				</li>
+				<li aria-current={$page.url.pathname === '/education' ? 'page' : undefined}>
+					<a href="/education" on:click={clickHandler}>Education</a>
 				</li>
 				<li aria-current={$page.url.pathname === '/my-work' ? 'page' : undefined}>
-					<a href="/my-work">My work</a>
+					<a href="/my-work" on:click={clickHandler}>My work</a>
 				</li>
 				<li aria-current={$page.url.pathname === '/skills' ? 'page' : undefined}>
-					<a href="/skills">Skills</a>
+					<a href="/skills" on:click={clickHandler}>Skills</a>
 				</li>
 				<li aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}>
-					<a href="/contact">Contact me?!</a>
+					<a href="/contact" on:click={clickHandler}>Contact me</a>
 				</li>
 			</ul>
-			<div class="nav-evener" aria-hidden></div>
+			<div class="hamburger-container">
+				<button class="" on:click={clickHandler}>Menu</button>
+			</div>
 		</nav>
 	</div>
 </header>
 
-<style>
+<style lang="scss">
 	header {
 		height: 48px;
 		display: flex;
 		justify-content: space-between;
-
 	}
 	.logo {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
 		width: 100%;
-		max-width: 3rem;
+		max-width: 5rem;
 	}
 	.logo h1 {
 		font-size: 1.6rem;
 		margin: 0;
-
 	}
-	.nav-evener {
+	.hamburger-container {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
 		width: 100%;
-		max-width: 3rem;
+		max-width: 5rem;
+		visibility: hidden;
+		& button {
+			position: relative;
+			border: none;
+			background-color: transparent;
+			&::before,
+			&::after {
+				position: absolute;
+				left: -16px;
+				content: '';
+				width: 15px;
+				height: 1px;
+				background-color: var(--color-text);
+			}
+			&::before {
+				top: 7px;
+			}
+			&::after {
+				bottom: 7px;
+			}
+		}
 	}
+
 	.fixed {
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 48px;
 		position: fixed;
-		background-color: var(--color-bg-0);
+		background-color: transparent;
 	}
 	.scrolled {
-		box-shadow: 0 0 30px -14px rgba(0,0,0,.3);
-		transition: box-shadow 200ms ease-in-out;
+		background-color: var(--color-bg-0);
+		box-shadow: 0 0 30px -14px rgba(0, 0, 0, 0.3);
+		transition: box-shadow 200ms ease-in-out, background-color 200ms 100ms ease-in-out;
 	}
 	nav {
 		display: flex;
@@ -96,11 +128,12 @@
 	li {
 		position: relative;
 		height: 100%;
+		max-height: none;
 	}
 	li::after {
 		content: '';
 		position: absolute;
-		bottom: -6px;
+		bottom: 0;
 		opacity: 0;
 		left: 15%;
 		width: 60%;
@@ -110,11 +143,11 @@
 		width: 70%;
 		height: 2px;
 		position: absolute;
-		bottom: 3px;
+		bottom: 2px;
 		opacity: 1;
 		background-color: var(--color-theme-2);
 		left: 15%;
-		transition: bottom 300ms ease-in-out, opacity 300ms 100ms ease-in-out;
+		transition: bottom 300ms 200ms ease-in-out, opacity 400ms 200ms ease-in-out;
 	}
 
 	nav a {
@@ -122,17 +155,49 @@
 		height: 100%;
 		align-items: center;
 		padding: 0 0.5rem;
-		font-family: var(--font-mono);
+		font-family: var(--font-body);
 		color: var(--color-text);
 		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;
-		/* letter-spacing: 0.1em; */
+		letter-spacing: 0.1em;
 		text-decoration: none;
 		transition: color 0.2s linear;
 	}
 
 	a:hover {
-		color: var(--color-theme-1);
+		color: var(--color-theme-2);
+	}
+
+	@media (max-width: 768px) {
+		.logo {
+			max-width: 3rem;
+		}
+		.hamburger-container {
+			visibility: visible;
+			max-width: 3rem;
+		}
+		ul {
+			position: absolute;
+			right: -100vw;
+			top: 48px;
+			width: 100vw;
+			height: calc(100vh - 48px);
+			z-index: 2;
+			background-color: var(--color-bg-0);
+			display: flex;
+			flex-flow: column;
+			opacity: 0;
+			justify-content: center;
+			transition: opacity 200ms cubic-bezier(0.47, 0, 0.745, 0.715);
+		}
+		.fixed.open ul {
+			right: 0;
+			opacity: 1;
+			transition: right 300ms 300ms cubic-bezier(0.47, 0, 0.745, 0.715), opacity 400 300 cubic-bezier(0.47, 0, 0.745, 0.715);
+		}
+		li {
+			max-height: 28px;
+		}
 	}
 </style>
