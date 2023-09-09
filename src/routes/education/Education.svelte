@@ -10,7 +10,6 @@
       const data= await res.json();
       education=data;
       visible = true
-      console.log(education)
     });
 </script>
 {#if visible}
@@ -76,7 +75,7 @@
   }
 	@media (max-width: 768px) {
     .section_education {
-      grid-template: 'heading' 'left' 'right';
+      grid-template: 'heading' 'right' 'left';
     }
 	}
 

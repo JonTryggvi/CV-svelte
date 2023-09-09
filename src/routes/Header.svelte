@@ -2,14 +2,14 @@
 	import { page } from '$app/stores';
 	let y;
 	let clicked = false;
-	let clickHandler = (e) => {
-		clicked = !clicked
-	}
+	let clickHandler = () => {
+		clicked = !clicked;
+	};
 </script>
 
 <svelte:window bind:scrollY={y} />
 <header>
-	<div class="fixed {y > 20 ? 'scrolled' : ''} { clicked ? 'open' : ''}">
+	<div class="fixed {y > 20 ? 'scrolled' : ''} {clicked ? 'open' : ''}">
 		<nav>
 			<div class="logo">
 				<a href="/">
@@ -17,7 +17,7 @@
 				</a>
 			</div>
 			<ul>
-				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined} >
+				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a href="/" on:click={clickHandler}>Hi there!</a>
 				</li>
 				<li aria-current={$page.url.pathname === '/love' ? 'page' : undefined}>
@@ -82,12 +82,24 @@
 				width: 15px;
 				height: 1px;
 				background-color: var(--color-text);
+				transform: rotateZ(0);
+				transform: transform 300ms ease-in-out;
 			}
 			&::before {
 				top: 7px;
 			}
 			&::after {
 				bottom: 7px;
+			}
+			.open &::before {
+				top: 50%;
+				transform: rotateZ(45deg);
+				transition: transform 300ms ease-in-out;
+			}
+			.open &::after {
+				bottom: calc(50% - 1px);
+				transform: rotateZ(-45deg);
+				transition: transform 300ms ease-in-out;
 			}
 		}
 	}
@@ -177,6 +189,7 @@
 			visibility: visible;
 			max-width: 3rem;
 		}
+
 		ul {
 			position: absolute;
 			right: -100vw;
@@ -194,7 +207,8 @@
 		.fixed.open ul {
 			right: 0;
 			opacity: 1;
-			transition: right 300ms 300ms cubic-bezier(0.47, 0, 0.745, 0.715), opacity 400 300 cubic-bezier(0.47, 0, 0.745, 0.715);
+			transition: right 300ms 300ms cubic-bezier(0.47, 0, 0.745, 0.715),
+				opacity 400 300 cubic-bezier(0.47, 0, 0.745, 0.715);
 		}
 		li {
 			max-height: 28px;
