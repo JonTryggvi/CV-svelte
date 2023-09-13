@@ -50,7 +50,7 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
-    width: calc(60% - 20px);
+
   }
   h1 {
     text-align: left;
